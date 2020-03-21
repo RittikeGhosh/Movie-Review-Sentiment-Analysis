@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}: IMDB</title>
+    <link rel="stylesheet" href="{% static '/imdb/css/details.css' %}">
+
+</head>
+<body>
+    <div class="album-container">
+        <div class="album-layer">
+            <img src="{% static 'imdb/img/got_back.jpg' %}" alt="">
+        </div>
+        <div class="album-flex">
+            <div class="poster">
+                <div class="poster-in">
+                    <img src="{% static 'imdb/img/got_album.jpg' %}" alt="got" >
+                </div>
+            </div>
+            <div class="movie-details">
+                <div class="detail-text">
+                    <div class="detail-text-title">
+                        {{title}}
+                    </div>
+                    <br>
+                    <div class="year"><span><b>Year :</b></span> <i>2008 - 2019</i></div>
+
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="body-top">
+            <span style="color:rgb(240, 100, 7);"><b><i>#</i></b> </span> 
+            {{title}}
+            ( <i>User Reviews</i> )
+        </div>
+    </div>
+</body>
+</html>
