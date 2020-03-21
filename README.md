@@ -6,7 +6,7 @@ First setup
 3. pipenv install django
 4. cd Senti..
 5. python manage.py runserver 8081
-6. go to 1: 27.0.0.1:8081
+6. go to : 127.0.0.1:8081
 
 
 next launch
