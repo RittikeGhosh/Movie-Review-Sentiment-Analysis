@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result</title>
+    <link rel="stylesheet" href="{% static 'imdb/css/search.css' %}">
+</head>
+<body>
+    <div class="search-header">
+        {% if not len %}
+        Sorry!! No result found for "<i> {{ query }} </i>"
+        {% else %}
+        Search Result for "<i>{{ query }}</i>"
+        {% endif %}
+    </div>
+    {% if len %}
+    <div class="search-result">
+        {% for x in data %}
+        <a href="{% url 'index' %}{{ x.id }}/details">
+        <div class="result-container">
+            <img src="{{ x.image }}" alt="">
+            <div class="movie-title">
+                <div style="width: 100%;"> {{ x.title }}</div>
+            </div>
+        </div></a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+</html>
