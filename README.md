@@ -5,7 +5,7 @@ First setup
 2. python -m pip install requests
 4. cd SentimentAnalysis/
 
-Second Time execution
-5. python manage.py runserver
-6. open link : 127.0.0.1:8000
+Second Time execution <br>
+5. python manage.py runserver <br>
+6. open link : 127.0.0.1:8000 <br>
 
