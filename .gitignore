@@ -1,1 +1,8 @@
-/.idea/
+# exclude all pychache files
+*.pyc
+
+# exclude vscode files 
+.vscode/
+
+#exclude Pipfile
+Pipfile*

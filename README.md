@@ -1,14 +1,11 @@
 # Movie-Review-Sentiment-Analysis
 
 First setup
-1. pip install pipenv
-2. pipenv shell
-3. pipenv install django
-4. cd Senti..
-5. python manage.py runserver 8081
-6. go to : 127.0.0.1:8081
+1. python -m pip install django
+2. python -m pip install requests
+4. cd SentimentAnalysis/
 
+Second Time execution
+5. python manage.py runserver
+6. open link : 127.0.0.1:8000
 
-next launch
-1. pipenv shell
-2. begin from 4
