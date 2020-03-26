@@ -108,6 +108,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMDB Sentiment Analyzer</title>
     <link rel="stylesheet" href="{% static 'imdb/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'imdb/css/corousel.css' %}">
     <!-- <link rel="stylesheet" 
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
@@ -135,5 +136,143 @@
             </div>
         </div>
     </form>
+
+   <!-- Corousel below -->
+   <div class="slide hi-slide">
+    <div class="hi-prev"></div>
+    <div class="hi-next"></div>
+    <ul>
+        {% load static %}
+        <li  data-url="tt2935510/details" > 
+            <img src="https://m.media-amazon.com/images/M/MV5BZTllZTdlOGEtZTBmMi00MGQ5LWFjN2MtOGEyZTliNGY1MzFiXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_UX182_CR0,0,182,268_AL__QL50.jpg"> 
+            
+                <div class="content" id="movie1">   
+                    <p class="name">Ad Astra </p>
+                    <p class="date" >2019-09-20</p>
+                    <p class="rating">6.6</p>
+                </div>
+            
+
+
+        </li>
+
+        <li data-url="/tt2527338/details"> 
+            <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/db32LaOibwEliAmSL2jjDF6oDdj.jpg">
+
+
+            <div class="content" id="movie2">   
+                <p class="name">Star Wars: The Rise of Skywalker</p>
+                <p class="date" >2019-12-20</p>
+                <p class="rating">6.8</p>
+            </div>
+  
+        </li>
+
+        <li data-url="tt1051906/details"> 
+        <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/4U7hpTK0XTQBKT5X60bKmJd05ha.jpg">
+
+            <div class="content" id="movie3">   
+                <p class="name">The Invisible Man</p>
+                <p class="date" >2020-02-28</p>
+                <p class="rating">7.3</p>
+            </div>
+
+
+
+        </li>
+
+
+        <li data-url="tt1634106/details"> 
+        <img src="https://m.media-amazon.com/images/M/MV5BYjA5YjA2YjUtMGRlNi00ZTU4LThhZmMtNDc0OTg4ZWExZjI3XkEyXkFqcGdeQXVyNjUyNjI3NzU@._V1_UY268_CR16,0,182,268_AL__QL50.jpg">
+
+            <div class="content" id="movie4">   
+                <p class="name">Bloodshot </p>
+                <p class="date" >2019-03-13</p>
+                <p class="rating">5.7</p>
+            </div>
+
+
+        </li>
+
+
+        <li data-url="tt7975244/details"> 
+        <img src="https://m.media-amazon.com/images/M/MV5BOTVjMmFiMDUtOWQ4My00YzhmLWE3MzEtODM1NDFjMWEwZTRkXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL__QL50.jpg">
+
+
+            <div class="content" id="movie5">   
+                <p class="name">Jumanji: The Next Level </p>
+                <p class="date" >2019-12-13</p>
+                <p class="rating">6.7</p>
+            </div>
+
+
+
+        </li>
+
+
+        <li data-url="tt7139936/details"> 
+        <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/z4A6mFOLTMZAhCSPRyrtzG0SPbd.jpg">
+
+
+            <div class="content" id="movie6">   
+                <p class="name">A Rainy Day in New York</p>
+                <p class="date" >2019-07-26</p>
+                <p class="rating">6.6</p>
+            </div>
+
+
+
+        </li>
+
+
+
+        <li data-url="tt1598778/details"> 
+        <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/kbC6I0AOSLTHFA2dieyat9h8QHP.jpg">
+
+
+            <div class="content" id="movie7">   
+                <p class="name">Contagion </p>
+                <p class="date" >2011-09-09</p>
+                <p class="rating">6.7</p>
+            </div>
+
+
+        </li>
+
+    </ul>
+    
+
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+{% load static %}
+<script src="{% static 'imdb/js/jquery.hislide.js' %}"> </script>
+<script type="text/javascript">
+    
+    $('.slide').hiSlide();
+
+// $( document ).ready(function() {
+//     alert('call');
+// });
+</script>
+
+    <script type="text/javascript">
+    
+    
+$( document ).ready(function() {
+    $('li').click(function()
+    {
+        url=$(this).data('url');
+         window.open(url);
+   
+});
+
+    
+});
+</script>
+    
 </body>
 </html>

@@ -1,0 +1,137 @@
+body{
+    font-family: tahoma;
+    overflow-x: hidden;
+    /* background-image: url("{ % static 'DEMOAPP/images/abstract.jpg' %}"); */
+    /* background-color: linear-gradinet(); */
+    /* background-image: linear-gradient(-90deg, red, yellow); */
+    /* background-image: linear-gradient(-90deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); */
+    /* background-size: cover; */
+    /* background-position: center; */
+    /* opacity: 0.9; */
+
+}
+.hi-slide{
+    position: absolute;
+    width: 754px;
+    height: 292px;
+    margin: 15px auto  0;
+    top: 28%;
+    left: 50%;
+    transform: translateX(-49%);
+}
+
+
+.hi-slide  .hi-next,  .hi-slide  .hi-prev{
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    border-radius: 50px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    color: grey;
+    transition: all 0.7s;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid grey;
+
+}
+
+
+.hi-slide  .hi-next:hover,  .hi-slide  .hi-prev:hover{
+    opacity: 1;
+    background-color: green;
+    box-shadow:1px 2px 5px 2px rgba(0,0,0,0.6);
+    color:white;
+    border: 2px solid green;
+
+}
+
+.hi-slide .hi-prev{
+    left: -70px;
+    /*left:-59px;*/
+
+
+}
+
+.hi-slide .hi-prev::before{
+    content: '<';
+}
+
+.hi-slide .hi-next{
+    right: -70px;
+
+}
+
+.hi-slide .hi-next::before{
+    content: '>';
+}
+
+.hi-slide>ul{
+    list-style: none;
+    position: relative;
+    width: 754px;
+    height: 292px;
+    margin: 0;
+    padding: 0;
+
+
+}
+
+
+.hi-slide> ul > li{
+
+    overflow: hidden;
+    position: absolute;
+    z-index: 0;
+    left: 377px;
+    top: 147px;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 3px solid white;
+    background-color: #333;
+    cursor: pointer;
+
+
+}
+
+.hi-slide > ul > li >img{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    z-index: 1;
+
+}
+
+.hi-slide > ul > li >div{
+    opacity: 1;
+    position: absolute;
+    bottom: 0;
+    /*height: auto;*/
+    width: 100%;
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    /*border: 1px solid yellow;*/
+    justify-content: justify;
+    background-color: rgba(0,0,0,0.6);
+}
+.hi-slide > ul > li >div >p{
+    padding: 0;
+    margin: 0;
+    font-size: auto;
+    text-align: center;
+    color: white;
+    /*border: 1px solid white;*/
+    
+}
+
+/* .hi-slide> ul > li:hover >div{
+    opacity: 1;
+    transition: all ease-in-out 0.5s;
+} */

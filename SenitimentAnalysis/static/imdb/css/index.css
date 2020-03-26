@@ -5,10 +5,11 @@
 }
 body{
     text-align: center;
-    background-image: url('../img/bg3_2x.jpg');
+    background-image: url('../img/bg1_2x.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 /* .land-page-layer{
     position: absolute;
@@ -37,15 +38,16 @@ body{
     background-color: #fff;
 }
 .head{
-    position: relative;
+    position: absolute;
     display: inline-block;
     width: auto;
     height: auto;
     background-color: rgb(2, 2, 2);
     padding: 10px 20px;
-    margin-top: 5vw;
+    margin-top: 3vw;
+    left:2vw;
     border-radius: 5px;
-    /* box-shadow: 5px 5px 5px #eee; */
+    box-shadow: 1px 1px 1px 1px #eee;
 }
 .head .title{
     color: #fff;
@@ -67,8 +69,8 @@ body{
     height: auto;
     margin-top: 10vw;
     text-align: center;
-    position: sticky;
-    top: 2vw;
+    position: absolute;
+    top: 26vw;
 }
 .search .search-bar{
     box-sizing: content-box;
@@ -80,7 +82,7 @@ body{
     border: 4px solid rgb(233, 41, 41);
     border-radius: 1em;
     padding: 0 1em;
-    box-shadow: 0px 0px 10px 3px rgba(224, 224, 224, 0.521);
+    box-shadow: 0px 0px 5px 3px rgba(224, 224, 224, 0.521);
 }
 .search .search-bar input{
     height: 100%;
