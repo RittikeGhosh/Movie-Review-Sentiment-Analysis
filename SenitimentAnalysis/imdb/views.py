@@ -10,7 +10,17 @@ def index(request):
     # template = loader.get_template('imdb/index.html')
     # return HttpResponse(template.render({}, request))
     # return HttpResponse("Welcome")
-    return render(request, 'imdb/index.html')
+    # import requests
+    #moviename=input("enter any movie you wanna search ")
+
+    url = "https://api.themoviedb.org/3/discover/movie?api_key=5425b76882cb33f92ad0f493bf3907ce&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false"
+
+    response = requests.request("GET", url)
+
+    print(response.json)
+    data=response.json()
+    context={'data':data}
+    return render(request, 'imdb/index.html',context)
 
 
 def search(request):

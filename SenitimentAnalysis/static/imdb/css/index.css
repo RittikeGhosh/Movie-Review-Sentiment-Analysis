@@ -70,7 +70,7 @@ body{
     margin-top: 10vw;
     text-align: center;
     position: absolute;
-    top: 26vw;
+    top: 50%;;
 }
 .search .search-bar{
     box-sizing: content-box;
