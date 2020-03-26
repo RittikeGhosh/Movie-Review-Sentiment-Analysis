@@ -9,34 +9,48 @@
 
 </head>
 <body>
-    <div class="album-container">
-        <div class="album-layer">
-            <img src="{{ data.poster }}" alt=" {{ data.title }}">
-        </div>
-        <div class="album-flex">
-            <div class="poster">
-                <div class="poster-in">
-                    <img src="{{ data.poster }}" alt="{{ data.title }}" >
-                </div>
-            </div>
-            <div class="movie-details">
-                <div class="detail-text">
-                    <div class="detail-text-title">
-                        {{ data.title }}
-                    </div>
-                    <br>
-                    <div class="year"><span><b>Year :</b></span> <i> {{ data.year }} </i></div>
 
-                </div> 
-            </div>
+<!-- Movie Details Section -->
+<div class="album-container">
+    <div class="album-layer">
+        <img src="{{ data.poster }}" alt=" {{ data.title }}">
+    </div>
+    <div class="album-flex">
+        <div class="poster">
+            <div class="poster-in"><img src="{{ data.poster }}" alt="{{ data.title }}" ></div>
+        </div>
+        <div class="movie-details">
+            <a href="/imdb/index">
+                <div class="home-link" title="HOME">
+                    <img src=" {% static 'imdb/img/.ico/home.svg' %}"  width="100%" alt="">
+                </div>
+            </a>
+            <div class="detail-text">
+                <div class="detail-text-title">{{ data.title }}</div><br>
+                <div class="other-details"><span><b>Year :</b></span> <i> {{ data.year }} </i></div><br>
+                <div class="other-details"><span><b>Length :</b></span> <i> {{ data.length }} </i></div><br>
+                <div class="other-details">
+                    <span><b>Rating :</b></span> 
+                    <img src=" {% static 'imdb/img/.ico/star.png' %}" style="height: 16px; position: relative; top: 3px;" alt="">
+                    <i> {{ data.rating }} </i></div><br>
+                <div class="other-details" style="padding-bottom: 5px;">
+                    <span><b>Plot : <br></b></span>
+                    {{ data.plot }}
+                </div><br>
+            </div> 
         </div>
     </div>
-    <div class="body">
-        <div class="body-top">
-            <span style="color:rgb(240, 100, 7);"><b><i>#</i></b> </span> 
-            {{ data.title }}
-            ( <code>User Reviews</code> )
-        </div>
+</div>
+<!-- End of Movie details -->
+
+<!-- User Review Section -->
+<div class="body">
+    <div class="body-top">
+        {{ data.title }}<code>(User Reviews)</code>
+        <img src="{% static 'imdb/img/.ico/feedback.png' %}" width="28px"  style="position: relative; top: 4px;" alt="">
     </div>
+</div>
+<!-- End of User section -->
+
 </body>
 </html>

@@ -2,6 +2,7 @@
     margin: 0 0;
     padding: 0 0;
     box-sizing: border-box;
+    line-height: 1.58em;
 }
 .album-container{
     width: 100%;
@@ -12,8 +13,8 @@
 .album-container .album-layer{
     position: absolute;
     width: 100%;
-    filter: blur(5px);
-    -webkit-filter: blur(2px);
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
     border-color: transparent;
     overflow: hidden;
     background-color: #000;
@@ -50,31 +51,40 @@
     position: relative;
     top: 50%;
     transform: translate(0%, -50%);
-    height: 70vh;
+    height: auto;
+    height: 70%;
     width: auto;
     background-color: #fff;
     overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.575);
-    box-shadow: 2px 2px 20px 10px rgba(252, 249, 249, 0.493);
+    border: 3px solid rgba(255, 255, 255, 0.575);
+    box-shadow: 0px 0px 5px 1px rgb(252, 249, 249);
 }
 .poster .poster-in img{
     width: auto;
     height: 100%;
 }
+.movie-details .home-link{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 5px;
+    position: absolute;
+    background-color: #fff;
+    top: 10px;
+    right: 10px;
+}
 .movie-details .detail-text{
     display: inline-block;
     height: 100%;
     width: 100%;
-    /* width: auto; */
     padding: 20px;
-    /* background-color: #fff; */
-    /* border: 3px solid white; */
 }
 .movie-details .detail-text .detail-text-title{
     display: inline-block;
-    font-size: 2em;
     color: white;
+    font-size: 24px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 5px;
     text-transform: uppercase;
     width: auto;
     background-color: rgba(12, 12, 12, 0.842);
@@ -83,17 +93,18 @@
     border-left: 5px solid rgb(240, 100, 7);
     font-family: monospace;
 }
-.movie-details .detail-text .year{
+.movie-details .detail-text .other-details{
     display: inline-block;
     margin-top: 2em;
     color: #000;
-    font-size: 1.5em;
+    font-size: 16px;
     width: auto;
     background-color: #fff;
-    padding: 5px;
+    padding: 0px 5px;
     padding-right: 20px;
     border-left: 5px solid rgb(7, 166, 240);
     font-family: monospace;
+    text-align: justify;
 }
 .body{
     position: absolute;
@@ -106,7 +117,7 @@
 }
 .body .body-top{
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-transform: capitalize;
     color: #fff;
@@ -114,8 +125,8 @@
     padding: 5px 10px;
     position: sticky;
     border-bottom-right-radius: 10px ;
-    /* border-left: 5px solid #fff;
-    border-right: 5px solid #fff; */
+    border-left: 5px solid rgb(240, 100, 7);
+    /* border-right: 5px solid #fff; */
     top: 0;
 }
 
@@ -144,5 +155,13 @@
         position: absolute;
         width: 100%;
         /* background-color: #fff; */
+    }
+    .movie-details .detail-text .detail-text-title{
+        font-size: 20px;
+    }
+    .body .body-top{
+        display: block;
+        border-radius: 0px;
+        font-size: 16px;
     }
 }
