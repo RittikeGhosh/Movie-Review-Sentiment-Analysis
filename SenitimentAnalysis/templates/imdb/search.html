@@ -10,14 +10,15 @@
 <body>
     <div class="search-header">
         {% if not len %}
-        Sorry!! No result found for "<i> {{ query }} </i>"
+        Sorry!! No result found for "<i><u>{{ query }}</u></i>"
         {% else %}
-        Search Result for "<i>{{ query }}</i>"
+        Search Result for "<i><u>{{ query }}</u></i>"
         {% endif %}
     </div>
     {% if len %}
     <div class="search-result">
         {% for x in data %}
+        {% if x.image != 'https://m.media-amazon.com/images/G/01/imdb/images/nopicture/32x44/film-3119741174._CB468665901_.png' %}
         <a href="{% url 'index' %}{{ x.id }}/details">
         <div class="result-container">
             <img src="{{ x.image }}" alt="">
@@ -25,6 +26,7 @@
                 <div style="width: 100%;"> {{ x.title }}</div>
             </div>
         </div></a>
+        {% endif %}
         {% endfor %}
     </div>
     {% endif %}
