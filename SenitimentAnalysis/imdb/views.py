@@ -16,8 +16,8 @@ def index(request):
 def search(request):
     query = request.GET['search-query']
 
+    s_query = query
     if len(query) > 0:
-        s_query = query
         query = quote_plus(query)
         headers = {
             'x-rapidapi-host': "imdb-internet-movie-database-unofficial.p.rapidapi.com",

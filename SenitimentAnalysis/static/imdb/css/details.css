@@ -4,6 +4,10 @@
     box-sizing: border-box;
     line-height: 1.58em;
 }
+html{
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+}
 .album-container{
     width: 100%;
     height: 100vh;
@@ -30,11 +34,14 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: calc(100vw -10px);
+    height: 100vh;
+    overflow: visible;
 }
 .poster{
     position: relative;
     width: 40%;
-    height: 100vh;
+    height: 100%;
     text-align: center;
     background-color: rgba(228, 42, 42, 0);
 }
@@ -42,9 +49,10 @@
     /* display: inline-block; */
     width: 60%;
     position: relative;
-    height: 100vh;
+    height: 100%;
     padding: 2vw;
     background-color: rgba(19, 19, 19, 0.219);
+    /* overflow: visible; */
 }
 .poster .poster-in{
     display: inline-block;
@@ -53,7 +61,7 @@
     transform: translate(0%, -50%);
     height: auto;
     height: 70%;
-    width: auto;
+    min-width: 200px;
     background-color: #fff;
     overflow: hidden;
     border: 3px solid rgba(255, 255, 255, 0.575);
@@ -66,16 +74,20 @@
 .movie-details .home-link{
     width: 40px;
     height: 40px;
-    border-radius: 20px;
-    padding: 5px;
-    position: absolute;
+    border-radius: 10px;
     background-color: #fff;
+    mask: url('../img/.ico/home.svg');
+    mask-size: cover;
+    position: absolute;
     top: 10px;
     right: 10px;
 }
+.home-link:hover{
+    background-color: rgb(197, 190, 190);
+}
 .movie-details .detail-text{
     display: inline-block;
-    height: 100%;
+    height: auto;
     width: 100%;
     padding: 20px;
 }
@@ -106,14 +118,33 @@
     font-family: monospace;
     text-align: justify;
 }
+.scroll-down{
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+.scroll-down .scroll-ico{
+    display: inline-block;
+    position: relative;
+    /* transform: rotate(180deg); */
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    animation: scroll-down 1s cubic-bezier(.49,.66,.52,.53) 0s infinite;
+    cursor: pointer;
+}
+.scroll-down span{
+    font-size: 20px; 
+    font-family: arial,sans-serif; 
+    color: #fff;
+}
 .body{
     position: absolute;
     z-index: 1;
     top: 100vh;
     width: 100%;
-    height: 800px;
+    height: auto;
     background-color: #fff;
-    /* padding: 10px; */
 }
 .body .body-top{
     display: inline-block;
@@ -124,12 +155,163 @@
     background-color: #000;
     padding: 5px 10px;
     position: sticky;
+    z-index: 500;
     border-bottom-right-radius: 10px ;
     border-left: 5px solid rgb(240, 100, 7);
     /* border-right: 5px solid #fff; */
     top: 0;
 }
-
+.user-reviews .reviews{
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px 10px;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.user-reviews .reviews .add-review .add-review-ico{ 
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: 0.05s;
+}
+.user-reviews .reviews .add-review .add-review-ico:hover{
+    transform: scale(1.05);
+}
+.user-reviews .reviews .sentiment{
+    width: calc(50% - 20px);
+    margin: 10px;
+    position: relative;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0px 0px 5px 0.5px #888;
+}
+.user-reviews .reviews .sentiment .sentiment-top{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    position: absolute;
+    z-index: 100;
+    padding: 5px 10px;
+    background-color: rgb(10, 10, 10);
+    color: #fff;
+    box-shadow: 0px 2px 5px #888;
+}
+.user-reviews .reviews .sentiment .sentiment-top .emojis{
+    width: 30px;
+    height: 30px;
+    margin: 5px 10px;
+    opacity: 0.5;
+}
+.user-reviews .reviews .sentiment .sentiment-top .emojis:hover{
+    opacity:1;
+}
+.user-reviews .reviews .sentiment .sentiment-content{
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #fff;
+}
+.user-reviews .reviews .sentiment .sentiment-content .sentiment-visualiser{
+    width: 30%;
+    border-right: 2px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* circular loader */
+.visualiser-out {
+    width: 100px;
+    height: 100px;
+    background: #e6e2e7;
+    border-radius: 50%;
+  }
+  .visualiser-out .circle .mask,
+  .visualiser-out .circle .fill {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    border-radius: 50%;
+  }
+  .visualiser-out .circle .mask {
+    clip: rect(0px, 100px, 100px, 50px);
+  }
+  .visualiser-out .circle .mask .fill {
+    clip: rect(0px, 50px, 100px, 0px);
+    background-color: #04b11b;
+  }
+  .visualiser-out .circle .mask.full,
+  .visualiser-out .circle .fill {
+    animation: fill-percentage ease-in-out 1.5s;
+    transform: rotate(126deg);
+  }
+  .visualiser-out .visualiser-in {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #fff;
+    line-height: 90px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 5px;
+    position: absolute;
+    z-index: 50;
+    font-weight: bold;
+    font-size: 28px;
+  }
+/* the end */
+.user-reviews .reviews .sentiment .sentiment-content .sentiment-review{
+    width: 70%;
+    padding: 10px;
+}
+.user-reviews .reviews .add-review .add-review-text{
+    width: calc(100% - 60px);
+    padding: 10px;
+    color: rgb(85, 85, 85);
+}
+.user-reviews .reviews .db-reviews{
+    width: calc(50% - 20px);
+    height: auto;
+    padding: 10px;
+    text-align: justify;
+    background-color: rgb(243, 242, 242);
+    margin: 10px;
+    border-radius: 2px;
+    font-family: arial,sans-serif;
+    font-weight: lighter;
+    font-size: 14px;
+}
+.user-reviews .reviews .add-review{
+    width: 250px;
+    height: 100px;
+    /* background-color: rgb(252, 241, 241); */
+    border-radius: 20px;
+    border: 3px solid #888;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.user-reviews .load-more{
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    margin: 0 auto;
+    position: relative;
+    top: -40px;
+    border-radius: 50%;
+    border: 2px solid #888;
+    background-color: rgb(248, 248, 248);
+    box-shadow: 5px 5px 5px #888;
+    cursor: pointer;
+}
 @keyframes bg{
     0%{
         transform: scale(1, 1);
@@ -141,7 +323,25 @@
         transform: scale(1, 1);
     }
 }
-
+@keyframes scroll-down{
+    0%{
+        top: -10px;
+    }
+    50%{
+        top: 10px;
+    }
+    100%{
+        top: -10px;
+    }
+}
+@keyframes fill-percentage {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(126deg);
+    }
+  }
 @media only screen and (max-width : 500px)
 {
     .album-flex{
@@ -163,5 +363,24 @@
         display: block;
         border-radius: 0px;
         font-size: 16px;
+    }
+    .user-reviews .reviews .sentiment .sentiment-content .sentiment-visualiser{
+        width: 100%;
+    }
+    .user-reviews .reviews .sentiment .sentiment-content .sentiment-review{
+        width: 100%;
+        border: none;
+    }
+}
+@media only screen and (max-width : 1200px)
+{
+    .user-reviews .reviews .db-reviews{
+        width: 100%;
+    }
+    .user-reviews .reviews .sentiment{
+        width: 100%;
+    }
+    .user-reviews .reviews .sentiment .sentiment-content{
+        margin-top: 60px;
     }
 }

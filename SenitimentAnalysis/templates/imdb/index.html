@@ -1,26 +1,26 @@
 {% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMDB Sentiment Analyzer</title>
-    <link rel="stylesheet" href="{% static 'imdb/css/index.css' %}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>IMDB Sentiment Analyzer</title>
+	<link rel="stylesheet" href="{% static 'imdb/css/index.css' %}">
 </head>
 <body>
-    <div class="top-bar"></div>
-    <div class="head">
-        <div class="title"><span>IMDB</span> Sentiment Analyzer</div>
-        <div class="stars">
-            <img src="{% static 'imdb/img/5star.png' %}" alt="">
-        </div>
-    </div>
-    <form action="/imdb/search" method="GET">
-        {% csrf_token %}
-        <div class="search">
-            <div class="search-bar">
-                <input type="text" name="search-query" placeholder="Search Movies and Shows..." autofocus="on">
-            </div>
-        </div>
-    </form>
+	<div class="top-bar"></div>
+	<div class="head">
+		<div class="title"><span>IMDB</span> Sentiment Analyzer</div>
+		<div class="stars">
+			<img src="{% static 'imdb/img/5star.png' %}" alt="">
+		</div>
+	</div>
+	<form action="/imdb/search" method="GET">
+		{% csrf_token %}
+		<div class="search">
+			<div class="search-bar">
+				<input type="text" name="search-query" placeholder="Search Movies and Shows..." autofocus="on">
+			</div>
+		</div>
+	</form>
 </body>
 </html>
