@@ -2,33 +2,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Result</title>
-    <link rel="stylesheet" href="{% static 'imdb/css/search.css' %}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Search Result</title>
+	<link rel="stylesheet" href="{% static 'imdb/css/search.css' %}">
 </head>
 <body>
-    <div class="search-header">
-        {% if not len %}
-        Sorry!! No result found for "<i><u>{{ query }}</u></i>"
-        {% else %}
-        Search Result for "<i><u>{{ query }}</u></i>"
-        {% endif %}
-    </div>
-    {% if len %}
-    <div class="search-result">
-        {% for x in data %}
-        {% if x.image != 'https://m.media-amazon.com/images/G/01/imdb/images/nopicture/32x44/film-3119741174._CB468665901_.png' %}
-        <a href="{% url 'index' %}{{ x.id }}/details">
-        <div class="result-container">
-            <img src="{{ x.image }}" alt="">
-            <div class="movie-title">
-                <div style="width: 100%;"> {{ x.title }}</div>
-            </div>
-        </div></a>
-        {% endif %}
-        {% endfor %}
-    </div>
+  <a href="/imdb/index">
+    <div class="home-link" title="HOME"></div>
+  </a>
+  <div class="search-header">
+    {% if not len %}
+    Sorry!! No result found for "<i><u>{{ query }}</u></i>"
+    {% else %}
+    Search Result for "<i><u>{{ query }}</u></i>"
     {% endif %}
+  </div>
+  {% if len %}
+  <div class="search-result">
+    {% for x in data %}
+    {% if x.image != 'https://m.media-amazon.com/images/G/01/imdb/images/nopicture/32x44/film-3119741174._CB468665901_.png' %}
+    <a href="{% url 'index' %}{{ x.id }}/details" style="margin: 20px;">
+    <div class="result-container">
+      <img src="{{ x.image }}" alt="">
+      <div class="movie-title">
+        <div style="width: 100%;"> {{ x.title }}</div>
+      </div>
+    </div></a>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
 </body>
 </html>
