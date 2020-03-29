@@ -11,12 +11,13 @@ body{
 
 }
 .hi-slide{
-    position: relative;
+    position: absolute;
     width: 754px;
     height: 292px;
     margin: 50px auto;
     left: 50%;
-    transform: translateX(-100%);
+    /* top: 0; */
+    transform: translateX(-50%);
 }
 .hi-slide  .hi-next,  .hi-slide  .hi-prev{
     position: absolute;
