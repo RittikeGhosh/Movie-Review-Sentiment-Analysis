@@ -188,6 +188,8 @@ html{
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     box-shadow: 0px 0px 5px 0.5px #888;
+    transform: scale(0.8);
+    transition: transform ease-in-out 0.3s;
 }
 .user-reviews .reviews .sentiment .sentiment-top{
     width: 100%;
@@ -207,9 +209,8 @@ html{
     height: 30px;
     margin: 5px 10px;
     opacity: 0.5;
-}
-.user-reviews .reviews .sentiment .sentiment-top .emojis:hover{
-    opacity:1;
+    transform: scale(0.8);
+    transition: 1s;
 }
 .user-reviews .reviews .sentiment .sentiment-content{
     width: 100%;
@@ -230,29 +231,31 @@ html{
 .visualiser-out {
     width: 100px;
     height: 100px;
+    margin: 10px;
     background: #e6e2e7;
     border-radius: 50%;
-  }
-  .visualiser-out .circle .mask,
-  .visualiser-out .circle .fill {
+}
+.visualiser-out .circle .mask,
+.visualiser-out .circle .fill {
     width: 100px;
     height: 100px;
     position: absolute;
     border-radius: 50%;
-  }
-  .visualiser-out .circle .mask {
+}
+.visualiser-out .circle .mask {
     clip: rect(0px, 100px, 100px, 50px);
-  }
-  .visualiser-out .circle .mask .fill {
+}
+.visualiser-out .circle .mask .fill {
     clip: rect(0px, 50px, 100px, 0px);
     background-color: #04b11b;
-  }
-  .visualiser-out .circle .mask.full,
-  .visualiser-out .circle .fill {
-    animation: fill-percentage ease-in-out 1.5s;
-    transform: rotate(126deg);
-  }
-  .visualiser-out .visualiser-in {
+}
+.visualiser-out .circle .mask.full,
+.visualiser-out .circle .fill {
+    /* animation: fill-percentage ease-in-out 1.5s; */
+    transform: rotate(0deg);
+    transition: transform ease-in-out 1.5s;
+}
+.visualiser-out .visualiser-in {
     width: 90px;
     height: 90px;
     border-radius: 50%;
@@ -265,7 +268,7 @@ html{
     z-index: 50;
     font-weight: bold;
     font-size: 28px;
-  }
+}
 /* the end */
 .user-reviews .reviews .sentiment .sentiment-content .sentiment-review{
     width: 70%;
@@ -285,8 +288,10 @@ html{
     margin: 10px;
     border-radius: 2px;
     font-family: arial,sans-serif;
-    font-weight: lighter;
     font-size: 14px;
+}
+.user-reviews .reviews .db-reviews .db-review-text{
+    color: rgb(10, 10, 10);
 }
 .user-reviews .reviews .add-review{
     width: 250px;
@@ -311,6 +316,73 @@ html{
     background-color: rgb(248, 248, 248);
     box-shadow: 5px 5px 5px #888;
     cursor: pointer;
+}
+#user-review-input{
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(32, 32, 32, 0.726);
+    overflow: inherit;
+}
+#user-review-input .input-area{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width:50%;
+    height: auto;
+    opacity: 0.4;
+    transition: 0.5s;
+}
+#user-review-input .input-area .input-fields{
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom left, rgb(0, 174, 255), rgb(0, 255, 115));
+}
+#user-review-input .input-area input{
+    display: block;
+    width: 100%;
+    height: 3em;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    border: 2px solid #888;
+}
+#user-review-input .input-area textarea{
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+    resize: vertical;
+}
+#user-review-input .input-area .input-controls{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+#user-review-input .input-area .input-controls button{
+    width: 200px;
+    height: 2.5em;
+    margin-top: 20px;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    transition: transform linear 0.1s;
+}
+button:hover{
+    transform: scale(1.05);
 }
 @keyframes bg{
     0%{
@@ -370,6 +442,9 @@ html{
     .user-reviews .reviews .sentiment .sentiment-content .sentiment-review{
         width: 100%;
         border: none;
+    }
+    #user-review-input .input-area{
+        width: 90%;
     }
 }
 @media only screen and (max-width : 1200px)

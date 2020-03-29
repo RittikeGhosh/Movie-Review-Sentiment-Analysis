@@ -1,5 +1,6 @@
 # exclude all pychache files
 *.pyc
+__pycache__
 
 # exclude vscode files 
 .vscode/

@@ -47,6 +47,7 @@ def search(request):
 
 
 def details(request, show_id = None):
+    # return render(request, 'imdb/details.html')
     if show_id != None:
         headers = {
             'x-rapidapi-host': "imdb-internet-movie-database-unofficial.p.rapidapi.com",

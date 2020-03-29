@@ -58,7 +58,7 @@
 		<div class="reviews">
 			<!-- FOR THE ADD REVIEW BUTTON -->
 			<div class ="db-reviews add-review">
-				<div class="add-review-ico">
+				<div class="add-review-ico" id="add-review-button">
 					<img src="{% static 'imdb/img/.ico/add_64px.png' %}" alt="add comments" height="100%" width="100%">
 				</div>
 				<div class="add-review-text">
@@ -67,24 +67,23 @@
 			</div>
 			<!-- END -->
 			<!-- APPENDED REVIEWS -->
-			<!-- actual review will look like this  -->
-			<div class="sentiment">
+			<div class="sentiment" style="display: none;">
 				<div class="sentiment-top">
 					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/worst_32px.png' %}" title="Worst" alt="worst" width="100%" height="100%">
-          </div>
+						<img src="{% static 'imdb/img/.ico/worst_32px.png' %}" title="Worst" alt="worst" width="100%" height="100%">
+					</div>
 					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/bad_32px.png' %}" title="Bad" alt="bad" width="100%" height="100%">
-          </div>
+						<img src="{% static 'imdb/img/.ico/bad_32px.png' %}" title="Bad" alt="bad" width="100%" height="100%">
+					</div>
 					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/average_32px.png' %}" title="Average" alt="average" width="100%" height="100%">
-          </div>
+						<img src="{% static 'imdb/img/.ico/average_32px.png' %}" title="Average" alt="average" width="100%" height="100%">
+					</div>
 					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/good_32px.png' %}" title="Good" alt="good" width="100%" height="100%">
-          </div>
+						<img src="{% static 'imdb/img/.ico/good_32px.png' %}" title="Good" alt="good" width="100%" height="100%">
+					</div>
 					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/excellent_32px.png' %}" title="Excellent" alt="excellent" width="100%" height="100%">
-          </div>
+						<img src="{% static 'imdb/img/.ico/excellent_32px.png' %}" title="Excellent" alt="excellent" width="100%" height="100%">
+					</div>
 				</div>
 				<div class="sentiment-content">
 					<div class="sentiment-visualiser">
@@ -97,118 +96,22 @@
 								<div class="fill"></div>
 							  </div>                              
 							  <div class="visualiser-in">
-								70%
-							  </div>
-							  
+								...
+							  </div>							  
 							</div>
 						</div>
 					</div>
 					<div class="sentiment-review">
-						<u><i><b>Review</b></i></u>
+						<u><i><b><span id = 'custom-uname'></span></b></i></u>
 						<blockquote>
-							Film criticism is the analysis and evaluation of films and the film medium. 
-							The concept is often used interchangeably with that of film reviews. 
-							A film review implies a recommendation aimed at consumers, however not all 
-							film criticism takes the form of reviews.
-						</blockquote>
-					</div>
-				</div>
-			</div>
-			<div class="sentiment">
-				<div class="sentiment-top">
-					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/worst_32px.png' %}" title="Worst" alt="worst" width="100%" height="100%">
-          </div>
-					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/bad_32px.png' %}" title="Bad" alt="bad" width="100%" height="100%">
-          </div>
-					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/average_32px.png' %}" title="Average" alt="average" width="100%" height="100%">
-          </div>
-					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/good_32px.png' %}" title="Good" alt="good" width="100%" height="100%">
-          </div>
-					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/excellent_32px.png' %}" title="Excellent" alt="excellent" width="100%" height="100%">
-          </div>
-				</div>
-				<div class="sentiment-content">
-					<div class="sentiment-visualiser">
-						<div class="visualiser-out">
-							<div class="circle">                             
-							  <div class="mask full">
-								<div class="fill"></div>
-							  </div>                            
-							  <div class="mask half">
-								<div class="fill"></div>
-							  </div>                              
-							  <div class="visualiser-in">
-								70%
-							  </div>
-							  
-							</div>
-						</div>
-					</div>
-					<div class="sentiment-review">
-						<u><i><b>Review</b></i></u>
-						<blockquote>
-							Film criticism is the analysis and evaluation of films and the film medium. 
-							The concept is often used interchangeably with that of film reviews. 
-							A film review implies a recommendation aimed at consumers, however not all 
-							film criticism takes the form of reviews.
-						</blockquote>
-					</div>
-				</div>
-			</div>
-			<div class="sentiment">
-				<div class="sentiment-top">
-					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/worst_32px.png' %}" title="Worst" alt="worst" width="100%" height="100%">
-          </div>
-					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/bad_32px.png' %}" title="Bad" alt="bad" width="100%" height="100%">
-          </div>
-					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/average_32px.png' %}" title="Average" alt="average" width="100%" height="100%">
-          </div>
-					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/good_32px.png' %}" title="Good" alt="good" width="100%" height="100%">
-          </div>
-					<div class="emojis">
-            <img src="{% static 'imdb/img/.ico/excellent_32px.png' %}" title="Excellent" alt="excellent" width="100%" height="100%">
-          </div>
-				</div>
-				<div class="sentiment-content">
-					<div class="sentiment-visualiser">
-						<div class="visualiser-out">
-							<div class="circle">                             
-							  <div class="mask full">
-								<div class="fill"></div>
-							  </div>                            
-							  <div class="mask half">
-								<div class="fill"></div>
-							  </div>                              
-							  <div class="visualiser-in">
-								70%
-							  </div>
-							  
-							</div>
-						</div>
-					</div>
-					<div class="sentiment-review">
-						<u><i><b>Review</b></i></u>
-						<blockquote>
-							Film criticism is the analysis and evaluation of films and the film medium. 
-							The concept is often used interchangeably with that of film reviews. 
-							A film review implies a recommendation aimed at consumers, however not all 
-							film criticism takes the form of reviews.
+							...
 						</blockquote>
 					</div>
 				</div>
 			</div>
 			<!-- END OF REVIEWS -->
 		</div>
-		<div class="reviews">
+		<div class="reviews" >
 			<div class="db-reviews">
 				<div class="db-review-text">
 					Film criticism is the analysis and evaluation of films and the film medium. 
@@ -258,8 +161,22 @@
 		</div>
 	</div>
 	<div style="text-align: right; width: 100%;">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+	<div id="user-review-input">
+		<div class="input-area">
+			<div class="input-fields">
+				<input type="text" placeholder="Your Name :"><br>
+				<textarea rows="10" placeholder="What do you think about it ?"></textarea>
+			</div>
+			<div class="input-controls">
+				<button style="background-color: #fff; color: #000;" onclick="analyse()">Analyse</button>
+				<button style="background-color: rgb(238, 55, 31);" onclick="exit()">Exit</button>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- End of User section -->
 
+<!-- load scripts  -->
+<script src="{% static 'imdb/js/details.js' %}"></script>
 </body>
 </html>
