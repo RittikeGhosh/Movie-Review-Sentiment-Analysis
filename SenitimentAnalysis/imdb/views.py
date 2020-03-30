@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, JsonResponse
 from django.template import loader
 from urllib.parse import quote_plus
 import requests
+import random
 
 # Create your views here.
 
@@ -44,6 +45,16 @@ def search(request):
             'query' : s_query
         }
     return render(request, 'imdb/search.html', context)
+
+
+def analyse(request):
+    if request.method == "GET":
+        data = {
+            'name': request.GET['name'],
+            'text': request.GET['text'],
+            'percent': random.randint(0, 100)
+            }
+    return JsonResponse(data)
 
 
 def details(request, show_id = None):

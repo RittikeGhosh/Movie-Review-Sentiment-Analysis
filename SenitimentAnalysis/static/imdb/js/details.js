@@ -3,7 +3,19 @@ function analyse(){
         alert("The inputs should not be empty !");
     else{
         exit();
-        setTimeout(() => addSentiment(inputOne.value, inputTwo.value), 50);
+
+        let ajaxRequest = new XMLHttpRequest();
+        ajaxRequest.onreadystatechange  = () => {
+            if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
+                data = JSON.parse(ajaxRequest.responseText);
+                setTimeout(() => addSentiment(data), 50);
+            }
+            else if(ajaxRequest.status == 400)
+                alert("Some internal error has occured");
+        }
+        ajaxRequest.open("GET", "/imdb/analyse?name=" + inputOne.value + "&text=" + inputTwo.value, true);
+        ajaxRequest.send();
+        
     }
 }
 
@@ -13,15 +25,15 @@ function exit(){
     setTimeout(() => model.style.display = "none", 200);
 }
 
-function addSentiment(uname, review){
+function addSentiment(data){
     "use strict"
     // create new node to add the personalize comment/review
     const newNodeContainer = document.getElementsByClassName('reviews')[0]; 
     const node = document.getElementsByClassName('sentiment')[0];
     let newNode = node.cloneNode(true);
     newNodeContainer.appendChild(newNode);
-
-    let percent = 80;
+    
+    let percent = data.percent;
     let emojiPos = -1;
     let color = '#04b11b';
     let degree = Math.ceil(percent/100 * 180);
@@ -29,8 +41,8 @@ function addSentiment(uname, review){
     let v1 = newNode.querySelectorAll('.visualiser-out .circle .mask.full');
 
     newNode.style.display = "block";
-    newNode.querySelectorAll('#custom-uname')[0].innerHTML = "User: " + uname;
-    newNode.getElementsByTagName("blockquote")[0].innerHTML = review;
+    newNode.querySelectorAll('#custom-uname')[0].innerHTML = "User: " + data.name;
+    newNode.getElementsByTagName("blockquote")[0].innerHTML = data.text;
     newNode.getElementsByClassName("visualiser-in")[0].innerHTML = percent + '%';
     
     if(percent > 80 && percent <= 100){
