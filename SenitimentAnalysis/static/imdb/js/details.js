@@ -10,12 +10,13 @@ function analyse(){
                 data = JSON.parse(ajaxRequest.responseText);
                 setTimeout(() => addSentiment(data), 50);
             }
-            else if(ajaxRequest.status == 400)
-                alert("Some internal error has occured");
+            else if(ajaxRequest.status == 404){
+                alert("Failed to Analyse. Some error has occured.");
+                ajaxRequest.abort();
+            }
         }
         ajaxRequest.open("GET", "/imdb/analyse?name=" + inputOne.value + "&text=" + inputTwo.value, true);
-        ajaxRequest.send();
-        
+        ajaxRequest.send();       
     }
 }
 
@@ -23,6 +24,25 @@ function exit(){
     element.style.opacity = 0.4;
     element.style.top = "40%";
     setTimeout(() => model.style.display = "none", 200);
+}
+
+function animateLargeEmoji(nodeImgUrl){
+    "use strict"
+    nodeImgUrl = nodeImgUrl.replace("32px", "512px");
+    console.log(nodeImgUrl);
+    document.getElementById("success-emoji").style.display = "block";
+    let largeEmoji = document.getElementById("large-emoji-box");
+    largeEmoji.getElementsByTagName('img')[0].src = nodeImgUrl;
+    setTimeout(() => {
+        largeEmoji.style.top = "10%";
+        largeEmoji.style.transform = "translate(-50%, -10%) scale(1)";
+        
+        setTimeout(() => {
+            largeEmoji.style.top = "120%";
+            largeEmoji.style.transform = "translate(-50%, -10%) scale(0)";
+            document.getElementById("success-emoji").style.display = "none";
+        }, 2500);
+    }, 50);
 }
 
 function addSentiment(data){
@@ -78,6 +98,10 @@ function addSentiment(data){
         for(let i = 0; i < v2.length; i++){
             v2[i].style.transform = "rotate(" + degree + "deg)";
         }
+        setTimeout(() => {
+            animateLargeEmoji(newNode.getElementsByClassName('emojis')[emojiPos].getElementsByTagName('img')[0].src)
+        },
+            1000);
     }, 50);
 }
 

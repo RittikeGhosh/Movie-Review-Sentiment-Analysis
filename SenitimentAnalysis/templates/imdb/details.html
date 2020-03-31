@@ -7,7 +7,6 @@
 	<title>{{ data.title }}: IMDB</title>
 	<link rel="stylesheet" href="{% static '/imdb/css/details.css' %}">
 </head>
-
 <body>
 <!-- Movie Details Section -->
 <div class="album-container">
@@ -19,20 +18,18 @@
 			<div class="poster-in"><img src="{{ data.poster }}" alt="{{ data.title }}" ></div>
 		</div>
 		<div class="movie-details">
-			<a href="/imdb/index">
-				<div class="home-link" title="HOME"></div>
-			</a>
+			<a href="/imdb/index"><div class="home-link" title="HOME"></div></a>
 			<div class="detail-text">
 				<div class="detail-text-title">{{ data.title }}</div><br>
-				<div class="other-details"><span><b>Year :</b></span> <i> {{ data.year }} </i></div><br>
-				<div class="other-details"><span><b>Length :</b></span> <i> {{ data.length }} </i></div><br>
+				<div class="other-details"><span><b>Year :</b></span> <i> {{ data.year | default:'Not Available' }} </i></div><br>
+				<div class="other-details"><span><b>Length :</b></span> <i> {{ data.length | default:"Not Available"}} </i></div><br>
 				<div class="other-details">
 					<span><b>Rating :</b></span> 
 					<img src=" {% static 'imdb/img/.ico/star.png' %}" style="height: 16px; position: relative; top: 3px;" alt="">
-					<i> {{ data.rating }} </i></div><br>
+					<i> {{ data.rating | default:'Not Available'}} </i></div><br>
 				<div class="other-details" style="padding-bottom: 5px; font-family: arial,sans-serif;">
 					<span><b>Plot : <br></b></span>
-					{{ data.plot }}
+					{{ data.plot | default:'Not Available'}}
 				</div><br>
 			</div> 
 			<div class="scroll-down">
@@ -54,7 +51,11 @@
 		<img src="{% static 'imdb/img/.ico/feedback.png' %}" width="28px"  style="position: relative; top: 4px;" alt="">
 	</div>
 	<a name="comments"></a>
+
+	<!-- User review section below -->
 	<div class="user-reviews">
+
+		<!-- Reviews made by the current user -->
 		<div class="reviews">
 			<!-- FOR THE ADD REVIEW BUTTON -->
 			<div class ="db-reviews add-review">
@@ -66,6 +67,7 @@
 				</div>
 			</div>
 			<!-- END -->
+
 			<!-- APPENDED REVIEWS -->
 			<div class="sentiment" style="display: none;">
 				<div class="sentiment-top">
@@ -86,6 +88,7 @@
 					</div>
 				</div>
 				<div class="sentiment-content">
+					<!-- Visualizer for the sentiments -->
 					<div class="sentiment-visualiser">
 						<div class="visualiser-out">
 							<div class="circle">                             
@@ -101,6 +104,7 @@
 							</div>
 						</div>
 					</div>
+					<!-- Sentiment Review Container -->
 					<div class="sentiment-review">
 						<u><i><b><span id = 'custom-uname'></span></b></i></u>
 						<blockquote>
@@ -109,8 +113,10 @@
 					</div>
 				</div>
 			</div>
-			<!-- END OF REVIEWS -->
 		</div>
+		<!-- End of current user comments -->
+
+		<!-- Pre-made Reviews -->
 		<div class="reviews" >
 			<div class="db-reviews">
 				<div class="db-review-text">
@@ -156,11 +162,13 @@
 				</div>
 			</div>
 		</div>
+		<!-- End of db review -->
+
 		<div class="load-more" title="Load More Reviews">
 			<img src="{% static 'imdb/img/.ico/expand_64px.png' %}" alt="load more" width="100%" height="100%">
 		</div>
 	</div>
-	<div style="text-align: right; width: 100%;">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
 	<div id="user-review-input">
 		<div class="input-area">
 			<div class="input-fields">
@@ -173,6 +181,14 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="success-emoji">
+		<div id="large-emoji-box">
+			<img src="{% static 'imdb/img/.ico/excellent_512px.png' %}" alt="">
+		</div>
+	</div>
+
+	<div style="text-align: right; width: 100%;">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 </div>
 <!-- End of User section -->
 

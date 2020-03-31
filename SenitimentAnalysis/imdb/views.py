@@ -60,6 +60,7 @@ def analyse(request):
 def details(request, show_id = None):
     # return render(request, 'imdb/details.html')
     if show_id != None:
+        # api call 
         headers = {
             'x-rapidapi-host': "imdb-internet-movie-database-unofficial.p.rapidapi.com",
             'x-rapidapi-key': "caac253e7fmshd1676ae9bef41dbp1f9a0bjsnb0b721567b87"

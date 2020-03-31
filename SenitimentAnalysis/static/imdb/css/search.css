@@ -16,6 +16,8 @@ body{
     background-color: #fff;
     mask: url('../img/.ico/home.svg');
     mask-size: contain;
+    -webkit-mask: url('../img/.ico/home.svg');
+    -webkit-mask-size: contain;
     position: relative;
     top: 10px;
     left: 10px;

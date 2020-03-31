@@ -78,6 +78,8 @@ html{
     background-color: #fff;
     mask: url('../img/.ico/home.svg');
     mask-size: cover;
+    -webkit-mask: url('../img/.ico/home.svg');
+    -webkit-mask-size: cover;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -145,8 +147,13 @@ html{
     width: 100%;
     height: auto;
     background-color: #fff;
+    /* overflow: hidden; */
 }
 .body .body-top{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0px;
+    z-index: 500;
     display: inline-block;
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -154,12 +161,10 @@ html{
     color: #fff;
     background-color: #000;
     padding: 5px 10px;
-    position: sticky;
-    z-index: 500;
     border-bottom-right-radius: 10px ;
     border-left: 5px solid rgb(240, 100, 7);
     /* border-right: 5px solid #fff; */
-    top: 0;
+    /* top: 0; */
 }
 .user-reviews .reviews{
     width: 95%;
@@ -320,7 +325,7 @@ html{
 #user-review-input{
     display: none;
     position: absolute;
-    z-index: 1000;
+    z-index: 900;
     top: 0;
     left: 0;
     width: 100%;
@@ -383,6 +388,40 @@ html{
 }
 button:hover{
     transform: scale(1.05);
+}
+#success-emoji{
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+}
+#large-emoji-box{
+    position: absolute;
+    /* top: 10%; left: 50%; */
+    top: 120%; left: 50%;
+    transform: translate(-50%, -10%) scale(0);
+    height: 50%;
+    width: auto;
+    transition: linear 0.3s;
+}
+#large-emoji-box img{
+    width: 100%;
+    transform-origin: center center;
+    animation: large-emoji ease-in-out 1s infinite;
+}
+@keyframes large-emoji {
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform:  translateY(10px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
 }
 @keyframes bg{
     0%{
