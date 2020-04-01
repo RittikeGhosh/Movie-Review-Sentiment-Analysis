@@ -54,9 +54,9 @@ class MovieReviewSentimentAnalyzer:
 
         # print(accuracy)
         
-        f = open('my_classifier.pickle', 'wb')
-        pickle.dump(classifier, f)
-        f.close()
+        # f = open('my_classifier.pickle', 'wb')
+        # pickle.dump(classifier, f)
+        # f.close()
 
         # return classifier
 
@@ -85,5 +85,5 @@ class MovieReviewSentimentAnalyzer:
 
 # if __name__ =='__main__':
 #     # Enter your reviews here
-#    result = MovieReviewSentimentAnalyzer("The movie was just fine").analyze()
+#    result = MovieReviewSentimentAnalyzer("The movie was best of all times").analyze()
 #    print(result)
