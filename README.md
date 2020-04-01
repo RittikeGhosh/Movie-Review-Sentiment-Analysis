@@ -9,8 +9,7 @@ Second Time execution <br>
 5. python manage.py runserver <br>
 6. open link : 127.0.0.1:8000 <br>
 
-RECOMMENED: Use virtual environment
-To setup virtual environment:
+RECOMMENED: Setup virtual environment:
 ```
 pip3 install vitualenv
 python3 -m virtualenv venv
