@@ -8,21 +8,21 @@
   <link rel="stylesheet" href="{% static 'imdb/css/corousel.css' %}">
 </head>
 <body>
-	<div class="top-layer"></div>
+  <div class="head">
+    <div class="title"><span style="font-weight: bold;">IMDB</span> Sentiment Analyzer</div>
+		<div class="stars">
+      <img src="{% static 'imdb/img/5star.png' %}" alt="">
+		</div>
+  </div>
   
   <!--  SEARCH BAR  -->
-	<div class="head">
-		<div class="title"><span>IMDB</span> Sentiment Analyzer</div>
-		<div class="stars">
-			<img src="{% static 'imdb/img/5star.png' %}" alt="">
-		</div>
-	</div>
 	<form action="/imdb/search" method="GET">
 		{% csrf_token %}
 		<div class="search">
 			<div class="search-bar">
 				<input type="text" name="search-query" placeholder="Search Movies and Shows..." autofocus="on">
-			</div>
+      </div>
+      <input type="submit" value="Search">
 		</div>
 	</form>
   

@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, JsonResponse
 from django.template import loader
 from urllib.parse import quote_plus
 import requests
+import random
 
 # Create your views here.
 
@@ -46,8 +47,20 @@ def search(request):
     return render(request, 'imdb/search.html', context)
 
 
+def analyse(request):
+    if request.method == "GET":
+        data = {
+            'name': request.GET['name'],
+            'text': request.GET['text'],
+            'percent': random.randint(0, 100)
+            }
+    return JsonResponse(data)
+
+
 def details(request, show_id = None):
+    # return render(request, 'imdb/details.html')
     if show_id != None:
+        # api call 
         headers = {
             'x-rapidapi-host': "imdb-internet-movie-database-unofficial.p.rapidapi.com",
             'x-rapidapi-key': "caac253e7fmshd1676ae9bef41dbp1f9a0bjsnb0b721567b87"
