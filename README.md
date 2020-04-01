@@ -11,15 +11,15 @@ Second Time execution <br>
 
 RECOMMENED: Use virtual environment
 To setup virtual environment:
-'''
+```
 pip3 install vitualenv
 python3 -m virtualenv venv
-'''
+```
 
 To activate the virtual environment:
-'''
+```
 source /venv/bin/source
-'''
+```
 
 To setup the sentiment-analyzer run the following commands: 
-'''
+```
