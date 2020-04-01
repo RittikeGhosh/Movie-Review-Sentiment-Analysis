@@ -1,14 +1,5 @@
 # Movie-Review-Sentiment-Analysis
 
-First setup
-1. python -m pip install django
-2. python -m pip install requests
-4. cd SentimentAnalysis/
-
-Second Time execution <br>
-5. python manage.py runserver <br>
-6. open link : 127.0.0.1:8000 <br>
-
 RECOMMENED: Setup virtual environment:
 ```
 pip3 install vitualenv
@@ -26,3 +17,12 @@ pip3 install -r requirements.txt
 import nltk
 nltk.download()
 ```
+To run rhe Sentiment-Analyzer:
+git clone https://github.com/RittikeGhosh/Movie-Review-Sentiment-Analysis
+cd SentimentAnalysis/
+
+To run the server:
+'''
+python manage.py runserver
+'''
+**the server will start running and you can see it function by going to 127.0.0.1:8000
