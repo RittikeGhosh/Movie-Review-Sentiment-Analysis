@@ -9,3 +9,17 @@ Second Time execution <br>
 5. python manage.py runserver <br>
 6. open link : 127.0.0.1:8000 <br>
 
+RECOMMENED: Use virtual environment
+To setup virtual environment:
+'''
+pip3 install vitualenv
+python3 -m virtualenv venv
+'''
+
+To activate the virtual environment:
+'''
+source /venv/bin/source
+'''
+
+To setup the sentiment-analyzer run the following commands: 
+'''
