@@ -1,5 +1,6 @@
 import string
 import nltk
+import pickle
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.classify import NaiveBayesClassifier
@@ -52,11 +53,20 @@ class MovieReviewSentimentAnalyzer:
         accuracy = nltk.classify.util.accuracy(classifier, test_set)
 
         # print(accuracy)
-        return classifier
+        
+        f = open('my_classifier.pickle', 'wb')
+        pickle.dump(classifier, f)
+        f.close()
+
+        # return classifier
 
     # function taking review for sentiment analysis
     def review_sentiment_analyzer(self, review):
-        classifier = self.configure_naive_bayes_classifier()
+        # classifier = self.configure_naive_bayes_classifier()
+        f = open('my_classifier.pickle', 'rb')
+        classifier = pickle.load(f)
+        f.close()
+
         probabilities = classifier.prob_classify(self.return_word_features(self.tokenize_and_remove_stop_words(review)))
         predicted_sentiment = probabilities.max()
         return predicted_sentiment
@@ -73,7 +83,7 @@ class MovieReviewSentimentAnalyzer:
         return (review_poll, review_score)
 
 
-# if __name__ =='__main__':
-#     # Enter your reviews here
-#    result = MovieReviewSentimentAnalyzer("The movie was just fine").analyze()
-#    print(result)
+if __name__ =='__main__':
+    # Enter your reviews here
+   result = MovieReviewSentimentAnalyzer("The movie was just fine").analyze()
+   print(result)
