@@ -83,7 +83,7 @@ class MovieReviewSentimentAnalyzer:
         return (review_poll, review_score)
 
 
-if __name__ =='__main__':
-    # Enter your reviews here
-   result = MovieReviewSentimentAnalyzer("The movie was just fine").analyze()
-   print(result)
+# if __name__ =='__main__':
+#     # Enter your reviews here
+#    result = MovieReviewSentimentAnalyzer("The movie was just fine").analyze()
+#    print(result)
