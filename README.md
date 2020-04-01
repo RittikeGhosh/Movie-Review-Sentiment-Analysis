@@ -18,7 +18,7 @@ python3 -m virtualenv venv
 
 To activate the virtual environment:
 ```
-source /venv/bin/source
+source venv/bin/activate
 sudo apt install python3-pip
 ```
 
