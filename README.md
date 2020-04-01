@@ -19,7 +19,6 @@ python3 -m virtualenv venv
 To activate the virtual environment:
 ```
 source venv/bin/activate
-sudo apt install python3-pip
 ```
 
 To setup packages for the sentiment-analyzer run the following commands: 
