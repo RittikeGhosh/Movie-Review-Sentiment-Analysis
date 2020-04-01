@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404, JsonResponse
 from django.template import loader
 from urllib.parse import quote_plus
+from  .sentimentanalyzer import MovieReviewSentimentAnalyzer
 import requests
-import random
 
 # Create your views here.
 
@@ -49,10 +49,12 @@ def search(request):
 
 def analyse(request):
     if request.method == "GET":
+        text = request.GET['text']
+        _, percent = MovieReviewSentimentAnalyzer(text).analyze()
         data = {
             'name': request.GET['name'],
             'text': request.GET['text'],
-            'percent': random.randint(0, 100)
+            'percent': percent
             }
     return JsonResponse(data)
 

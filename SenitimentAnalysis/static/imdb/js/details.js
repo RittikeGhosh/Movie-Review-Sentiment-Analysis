@@ -53,10 +53,10 @@ function addSentiment(data){
     let newNode = node.cloneNode(true);
     newNodeContainer.appendChild(newNode);
     
-    let percent = data.percent;
+    let percent = parseInt(data.percent);
     let emojiPos = -1;
     let color = '#04b11b';
-    let degree = Math.ceil(percent/100 * 180);
+    let degree = percent/100 * 180;
     let v2 = newNode.querySelectorAll('.visualiser-out .circle .fill');
     let v1 = newNode.querySelectorAll('.visualiser-out .circle .mask.full');
 
