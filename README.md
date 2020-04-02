@@ -13,17 +13,15 @@ source venv/bin/activate
 
 To setup packages for the sentiment-analyzer run the following commands: 
 ```
+git clone https://github.com/RittikeGhosh/Movie-Review-Sentiment-Analysis
 pip3 install -r requirements.txt
 import nltk
 nltk.download()
 ```
-To run rhe Sentiment-Analyzer:
-```
-git clone https://github.com/RittikeGhosh/Movie-Review-Sentiment-Analysis
-cd SentimentAnalysis/
-```
+
 To run the server:
 ```
+cd SentimentAnalysis/
 python manage.py runserver
 ```
 **the server will start running and you can see it function by going to 127.0.0.1:8000
