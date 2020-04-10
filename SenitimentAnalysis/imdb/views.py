@@ -4,6 +4,8 @@ from django.template import loader
 from urllib.parse import quote_plus
 from  .sentimentanalyzer import MovieReviewSentimentAnalyzer
 import requests
+import json
+import random
 
 # Create your views here.
 
@@ -60,26 +62,35 @@ def analyse(request):
 
 
 def details(request, show_id = None):
-    # return render(request, 'imdb/details.html')
+    # return render(request, 'imdb/details.html', context)
     if show_id != None:
-        # api call 
-        headers = {
+        headers1 = {
             'x-rapidapi-host': "imdb-internet-movie-database-unofficial.p.rapidapi.com",
             'x-rapidapi-key': "caac253e7fmshd1676ae9bef41dbp1f9a0bjsnb0b721567b87"
             }
-        domain = "https://imdb-internet-movie-database-unofficial.p.rapidapi.com"
-        endpoint2 = 'film'
-        url = '/'.join((domain, endpoint2, show_id))
-        response = requests.request("GET", url, headers=headers)
+        headers2 = {
+            'x-rapidapi-host': "imdb8.p.rapidapi.com",
+            'x-rapidapi-key': "caac253e7fmshd1676ae9bef41dbp1f9a0bjsnb0b721567b87"
+        }
+        detailUrl = "https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/" + show_id
+        reviewUrl = "https://imdb8.p.rapidapi.com/title/get-user-reviews"
+        querystring = {"tconst": show_id}
+        response = requests.request("GET", detailUrl, headers=headers1)
+        response2 = requests.request("GET", reviewUrl, headers=headers2, params=querystring)
+
         data = response.json()
-        print(data)
+        data2 = response2.json()
+        
         if data['title'] == '':
             raise Http404("Details Does not exist! :-( ")
+
         context = {
-            'data' : data
+            'data' : data,
+            'data2': data2
         }
     else: 
         context = {
-            'title' : 'GOT: game of thrones'
+            'data' : 'Not Found',
+            'data2' : 'Not Found'
         }
     return render(request, 'imdb/details.html', context)
