@@ -1,5 +1,12 @@
 # Movie-Review-Sentiment-Analysis
 
+> ### *Must be connected to Internet for the APIs to response*
+
+In the project 2 APIs are used(one for the search result and another to get reviews)
+1. https://rapidapi.com/hmerritt/api/imdb-internet-movie-database-unofficial
+2. https://rapidapi.com/apidojo/api/imdb8 (need to subscribe)
+> You need to add your api key, to do that simply assign your api key you will get from<b>rapidapi</b> to the variable ```key``` in the view.py file.
+
 RECOMMENED: Setup virtual environment:
 ```
 pip3 install vitualenv
