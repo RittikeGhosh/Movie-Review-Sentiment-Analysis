@@ -6,22 +6,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ data.title }}: IMDB</title>
 	<link rel="stylesheet" href="{% static '/imdb/css/details.css' %}">
+	<link rel="icon" href="{% static 'imdb/img/.ico/star.png' %}">
 </head>
 <body>
 <!-- Movie Details Section -->
 <div class="album-container">
 	<div class="album-layer">
-		<img src="{{ data.poster }}" alt=" {{ data.title }}">
+		<img src="{{ data2.base.image.url }}" alt=" {{ data.title }}">
 	</div>
 	<div class="album-flex">
 		<div class="poster">
-			<div class="poster-in"><img src="{{ data.poster }}" alt="{{ data.title }}" ></div>
+			<div class="poster-in"><img src="{{ data2.base.image.url }}" alt="{{ data.title }}" ></div>
 		</div>
 		<div class="movie-details">
 			<a href="/imdb/index"><div class="home-link" title="HOME"></div></a>
 			<div class="detail-text">
 				<div class="detail-text-title">{{ data.title }}</div><br>
-				<div class="other-details"><span><b>Year :</b></span> <i> {{ data.year | default:'Not Available' }} </i></div><br>
+				<div class="other-details"><span><b>Year :</b></span> <i> {{ data2.base.year | default:'Not Available' }} </i></div><br>
 				<div class="other-details"><span><b>Length :</b></span> <i> {{ data.length | default:"Not Available"}} </i></div><br>
 				<div class="other-details">
 					<span><b>Rating :</b></span> 
@@ -54,12 +55,11 @@
 
 	<!-- User review section below -->
 	<div class="user-reviews">
-
 		<!-- Reviews made by the current user -->
-		<div class="reviews">
+		<div class="reviews" style="border: none;">
 			<!-- FOR THE ADD REVIEW BUTTON -->
-			<div class ="db-reviews add-review">
-				<div class="add-review-ico" id="add-review-button">
+			<div class ="db-reviews add-review" style="cursor: pointer;">
+				<div class="add-review-ico">
 					<img src="{% static 'imdb/img/.ico/add_64px.png' %}" alt="add comments" height="100%" width="100%">
 				</div>
 				<div class="add-review-text">
@@ -117,50 +117,30 @@
 		<!-- End of current user comments -->
 
 		<!-- Pre-made Reviews -->
-		<div class="reviews" >
-			<div class="db-reviews">
-				<div class="db-review-text">
-					Film criticism is the analysis and evaluation of films and the film medium. 
-					The concept is often used interchangeably with that of film reviews. 
-					A film review implies a recommendation aimed at consumers, however not all 
-					film criticism takes the form of reviews.
-				</div>
+		<div class="reviews db" >
+			<div style="
+				width: 100%;
+				text-align: left;
+				font-size: 20px;
+				padding: 10px 20px; 
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				font-weight: bold;">
+				<span style="color: rgb(59, 59, 59);">Saved</span>-User Reviews
 			</div>
-			<div class="db-reviews">
-				<div class="db-review-text">
-					Film criticism is the analysis and evaluation of films and the film medium. 
-					The concept is often used interchangeably with that of film reviews. 
-					A film review implies a recommendation aimed at consumers, however not all 
-					film criticism takes the form of reviews.
+			<div class="db-review-container">
+				{% for x in data2.reviews %}
+				<div class="db-reviews">
+					<div class="db-review-pbar">
+						<div class="db-bar"></div>
+						<div class="tooltip"><span>Processing...</span>%</div>
+					</div>
+					<div class="db-review-text">
+						{{ x.reviewText }}
+					</div>
 				</div>
+				{% endfor %}
 			</div>
-			<div class="db-reviews">
-				<div class="db-review-text">
-					Film criticism is the analysis and evaluation of films and the film medium. 
-					The concept is often used interchangeably with that of film reviews. 
-					A film review implies a recommendation aimed at consumers, however not all 
-					film criticism takes the form of reviews.Film criticism is the analysis and evaluation of films and the film medium. 
-					The concept is often used interchangeably with that of film reviews. 
-					A film review implies a recommendation aimed at consumers, however not all 
-					film criticism takes the form of reviews.
-				</div>
-			</div>
-			<div class="db-reviews">
-				<div class="db-review-text">
-					Film criticism is the analysis and evaluation of films and the film medium. 
-					The concept is often used interchangeably with that of film reviews. 
-					A film review implies a recommendation aimed at consumers, however not all 
-					film criticism takes the form of reviews.
-				</div>
-			</div>
-			<div class="db-reviews">
-				<div class="db-review-text">
-					Film criticism is the analysis and evaluation of films and the film medium. 
-					The concept is often used interchangeably with that of film reviews. 
-					A film review implies a recommendation aimed at consumers, however not all 
-					film criticism takes the form of reviews.
-				</div>
-			</div>
+			<div id="user-review-scroll"></div>
 		</div>
 		<!-- End of db review -->
 

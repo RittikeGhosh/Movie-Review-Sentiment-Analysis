@@ -5,14 +5,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Search Result</title>
-	<link rel="stylesheet" href="{% static 'imdb/css/search.css' %}">
+  <link rel="stylesheet" href="{% static 'imdb/css/search.css' %}">
+  <link rel="icon" href="{% static 'imdb/img/.ico/star.png' %}">
 </head>
 <body>
   <a href="/imdb/index">
     <div class="home-link" title="HOME">
     </div>
   </a>
-  <!-- <img src="{% static 'imdb/.ico/home.svg' %}" width="100%" height="100%" alt=""> -->
   <div class="search-header">
     {% if not len %}
     Sorry!! No result found for "<i><u>{{ query }}</u></i>"
