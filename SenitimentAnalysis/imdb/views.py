@@ -7,6 +7,10 @@ import requests
 import json
 import random
 
+
+# Make sure to add your own api key here
+key = "caac253e7fmshd1676ae9bef41dbp1f9a0bjsnb0b721567b87"
+
 # Create your views here.
 
 def index(request):
@@ -22,6 +26,7 @@ def index(request):
 
 
 def search(request):
+    global key
     query = request.GET['search-query']
 
     s_query = query
@@ -29,7 +34,7 @@ def search(request):
         query = quote_plus(query)
         headers = {
             'x-rapidapi-host': "imdb-internet-movie-database-unofficial.p.rapidapi.com",
-            'x-rapidapi-key': "caac253e7fmshd1676ae9bef41dbp1f9a0bjsnb0b721567b87"
+            'x-rapidapi-key': key
             }
         domain = "https://imdb-internet-movie-database-unofficial.p.rapidapi.com"
         endpoint1 = 'search'
@@ -66,11 +71,11 @@ def details(request, show_id = None):
     if show_id != None:
         headers1 = {
             'x-rapidapi-host': "imdb-internet-movie-database-unofficial.p.rapidapi.com",
-            'x-rapidapi-key': "caac253e7fmshd1676ae9bef41dbp1f9a0bjsnb0b721567b87"
+            'x-rapidapi-key': key
             }
         headers2 = {
             'x-rapidapi-host': "imdb8.p.rapidapi.com",
-            'x-rapidapi-key': "caac253e7fmshd1676ae9bef41dbp1f9a0bjsnb0b721567b87"
+            'x-rapidapi-key': key
         }
         detailUrl = "https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/" + show_id
         reviewUrl = "https://imdb8.p.rapidapi.com/title/get-user-reviews"
