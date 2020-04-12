@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, JsonResponse
 from django.template import loader
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, unquote
 from  .sentimentanalyzer import MovieReviewSentimentAnalyzer
 import requests
 import json
@@ -56,18 +56,15 @@ def search(request):
 
 def analyse(request):
     if request.method == "GET":
-        text = request.GET['text']
+        text = unquote(request.GET['text'])
         _, percent = MovieReviewSentimentAnalyzer(text).analyze()
-        data = {
-            'name': request.GET['name'],
-            'text': request.GET['text'],
-            'percent': percent
-            }
+        data = {'percent': percent}
     return JsonResponse(data)
 
 
 def details(request, show_id = None):
     # return render(request, 'imdb/details.html', context)
+    global key
     if show_id != None:
         headers1 = {
             'x-rapidapi-host': "imdb-internet-movie-database-unofficial.p.rapidapi.com",

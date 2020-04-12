@@ -401,7 +401,7 @@ html{
 }
 #user-review-input .input-area{
     position: absolute;
-    top: 40%;
+    top: 50vw;
     left: 50%;
     transform: translateX(-50%);
     width:50%;

@@ -1,4 +1,5 @@
 // main body...
+var addReview = false;
 var model = document.getElementById('user-review-input');
 var element = document.querySelectorAll('#user-review-input .input-area')[0];
 var inputOne = document.querySelectorAll("#user-review-input .input-area input")[0];
@@ -42,18 +43,23 @@ window.onload = function(){
                 })();
             }
         }
-        ajaxReq.open("GET", "/imdb/analyse?name=' '&text=" + review, true);
+        ajaxReq.open("GET", "/imdb/analyse?&text=" + encodeURIComponent(review), true);
         ajaxReq.send();
     }
 };
 
 document.querySelectorAll('.db-reviews.add-review')[0].onclick = function(){
+    if(addReview == false){
+        alert("Your First review may take more time to analyse because of any ongoing anaylsing of Saved-user reviews below!")
+        addReview = true;
+    }
+
     // clear the past inputs
     (() => {inputOne.value = ''; inputTwo.value = '';})();
     model.style.display = "block";
     setTimeout(() => {
         element.style.opacity = 1;
-        element.style.top = "50px";
+        element.style.top = "20vh";
     }, 50);
 }
 
@@ -73,7 +79,7 @@ document.getElementsByClassName('load-more')[0].onclick = function(){
 
 function exit(){
     element.style.opacity = 0.4;
-    element.style.top = window.innerHeight*0.5 + 'px';
+    element.style.top = '50vw';
     setTimeout(() => model.style.display = "none", 200);
 }
 
@@ -94,7 +100,8 @@ function analyse(){
                 ajaxRequest.abort();
             }
         }
-        ajaxRequest.open("GET", "/imdb/analyse?name=" + inputOne.value + "&text=" + inputTwo.value, true);
+        let uri  = "&text=" + encodeURIComponent(inputTwo.value);
+        ajaxRequest.open("GET","/imdb/analyse?" + uri, true);
         ajaxRequest.send();       
     }
 }
@@ -104,8 +111,10 @@ function createReviewNode(){
     const newNodeContainer = document.getElementsByClassName('reviews')[0]; 
     const node = document.getElementsByClassName('sentiment')[0];
     let newNode = node.cloneNode(true);
-    newNodeContainer.appendChild(newNode);
+    newNodeContainer.insertBefore(newNode, node.nextElementSibling);
     newNode.style.display = "block";
+    newNode.querySelectorAll('#custom-uname')[0].innerHTML = "User: " + inputOne.value;
+    newNode.getElementsByTagName("blockquote")[0].innerHTML = inputTwo.value;
     return newNode;
 }
 
@@ -119,8 +128,6 @@ function addSentiment(data, newNode){
     let v1 = newNode.querySelectorAll('.visualiser-out .circle .mask.full');
 
     newNode.style.opacity = "1";
-    newNode.querySelectorAll('#custom-uname')[0].innerHTML = "User: " + data.name;
-    newNode.getElementsByTagName("blockquote")[0].innerHTML = data.text;
     newNode.getElementsByClassName("visualiser-in")[0].innerHTML = percent + '%';
     
     if(percent > 80 && percent <= 100){
